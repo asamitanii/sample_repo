@@ -13,7 +13,7 @@
 				<h2><%= link_to article.title, article_path(article.id) %></h2>
 				<p><!-- ここに投稿した日付を入れる　-->
 					<!-- UTCじゃなくするのと、フォーマットも変える　-->
-					<%= article.created_at %>
+					<%= l article.created_at, format: :default %>
 
 					<br>
 				
