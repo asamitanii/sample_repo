@@ -1,0 +1,47 @@
+
+<div id="main">
+    <%= image_tag 'main-img.jpg' %>
+</div>
+
+<div id="article_wrap">
+
+    <div id="article_list">
+        
+
+		<% @articles.each do |article| %>
+			<div>
+				<h2><%= link_to article.title, article_path(article.id) %></h2>
+				<p><!-- ここに投稿した日付を入れる　-->
+					<!-- UTCじゃなくするのと、フォーマットも変える　-->
+					<%= article.created_at %>
+
+					<br>
+				
+
+					<% if user_signed_in? %>
+						<%= link_to '編集', edit_article_path(article) %>
+						<%= link_to '削除', article_path(article),
+		                    method: :delete, data: { confirm: '削除しますか？' } %>
+		            <% else %>
+		            <% end %>
+	            </p>
+	        </div>
+
+		<% end %>
+
+	</div>
+
+    <div id="sidebar">
+        
+        <h2>★PV数ランキング</h2>
+        <ul>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+
+</div>
+	
