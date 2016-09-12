@@ -19,10 +19,18 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+
+
+		REDIS.zincrby("articles/all/", 1, "#{@article.id}")
+
+
 	end
 
 	def index
 		@articles = Article.all
+
+		@popular_ids = REDIS.zrevrange "articles/all/", 0, -1, withscores: true
+		
 	end
 
 	def edit

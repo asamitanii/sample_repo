@@ -40,6 +40,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # mailer setting
+  # gem deviseの設定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # redisの環境変数
+  ENV["REDIS"] = "localhost:6379"
 
 end
